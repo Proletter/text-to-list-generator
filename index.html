@@ -20,8 +20,9 @@
       </div>
       
       <ul class="list-group mt-1" v-if="lists.length != 0">
-        <li class="list-group-item" v-for="list in lists">
+        <li class="list-group-item" id={{textId}}  @click="copyText(event)" v-for="list in lists">
           {{ list }}
+	 
         </li>
       </ul>
       
@@ -58,6 +59,7 @@
     lists: [],
     check: true,
     errorText: '',
+	  textId: 1
   },
   
  methods: {
@@ -75,7 +77,16 @@
    }
  
  },
-
+copyText: function(event){
+   
+    this.textId++
+  console.log(event.target)
+  // console.log(e)
+  console.log("copying tesxt")
+ 	// const copyText = document.getElementById(this.textSelector); 
+ 	// copyText.select(); 
+ 	// document.execCommand("copy"); 
+},
 performGenerate: function(){
     if(this.result != "") {
         const list = this.result.trim().split(".")  
